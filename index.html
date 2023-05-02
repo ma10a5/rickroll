@@ -21,19 +21,18 @@
     </style>
 </head>
 <body>
-  <p>Conduct the rickroll</p>
-  <video autoplay controls>
-      <source src="rickroll.mp4" type="video/mp4">
-                                                     </video>
-                                                     <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        var video = document.querySelector('video');
-        video.addEventListener('loadedmetadata', function() {
-          video.requestFullscreen().then(function() {
-            video.play();
-          });
+ <p>Conduct the rickroll</p>
+  <video autoplay>
+    <source src="rickroll.mp4" type="video/mp4">
+  </video>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var video = document.querySelector('video');
+      video.addEventListener('loadedmetadata', function() {
+        video.requestFullscreen().then(function() {
+          video.play();
         });
       });
-    </script>
+    });
 </body>
 </html>
