@@ -25,33 +25,31 @@
       height: 100%;
       object-fit: fill;
     }
-
-    #text-overlay {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      color: white;
-      font-size: 32px;
-      font-weight: bold;
-      text-align: center;
-    }
   </style>
 </head>
 <body>
   <div id="video-container">
-    <video id="my-video" autoplay>
+    <video id="my-video">
       <source src="rickroll.mp4" type="video/mp4">
     </video>
-    <div id="text-overlay">Conduct the Rickroll</div>
   </div>
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       var video = document.getElementById('my-video');
-      video.addEventListener('loadedmetadata', function() {
+
+      video.addEventListener('canplay', function() {
         video.play();
       });
+
+      video.addEventListener('ended', function() {
+        playAudio();
+      });
+
+      function playAudio() {
+        var audio = new Audio('rickroll.mp3');
+        audio.play();
+      }
     });
   </script>
 </body>
