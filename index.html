@@ -2,37 +2,49 @@
 <html>
 <head>
   <meta property="og:type" content="website">
-<meta property="og:url" content="colonists.io/iB437!#">
-<meta property="og:title" content="Colonist: Play Settlers of Catan Alternative - Free Online Game">
-<meta property="og:description" content="Free online alternative to the popular board game Settlers of Catan. Play single or multiplayer. No download or sign up required!">
-<meta property="og:image"https://colonist.io/dist/images/square_logo.png?v=157">
-<meta property="og:image" content="https://colonist.io/dist/images/square_logo.png" />
-                                                                                   <style>
-      html, body {
-        margin: 0;
-        padding: 0;
-      }
+  <meta property="og:url" content="colonists.io/iB437!#">
+  <meta property="og:title" content="Colonist: Play Settlers of Catan Alternative - Free Online Game">
+  <meta property="og:description" content="Free online alternative to the popular board game Settlers of Catan. Play single or multiplayer. No download or sign up required!">
+  <meta property="og:image" content="https://colonist.io/dist/images/square_logo.png?v=157">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: black;
+      color: white;
+      font-size: 30px;
+      font-family: Arial, sans-serif;
+    }
 
-      video {
-        width: 100%;
-        height: 100%;
-        object-fit: fill;
-      }
-    </style>
-</head>
-<body>
- <p>Conduct the rickroll</p>
-  <video autoplay>
-    <source src="rickroll.mp4" type="video/mp4">
-  </video>
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: fill;
+    }
+  </style>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      var video = document.querySelector('video');
-      video.addEventListener('loadedmetadata', function() {
-        video.requestFullscreen().then(function() {
-          video.play();
+      var textElement = document.getElementById('text');
+      var videoElement = document.getElementById('video');
+
+      setTimeout(function() {
+        textElement.style.display = 'none';
+        videoElement.style.display = 'block';
+        videoElement.requestFullscreen().then(function() {
+          videoElement.play();
         });
-      });
+      }, 3000);
     });
+  </script>
+</head>
+<body>
+  <div id="text">Conducting Rickroll</div>
+  <video id="video" autoplay style="display: none;">
+    <source src="rickroll.mp4" type="video/mp4">
+  </video>
 </body>
 </html>
