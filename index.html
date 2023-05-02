@@ -28,7 +28,6 @@
       padding: 20px;
       max-width: 300px;
       text-align: center;
-      border-radius: 10px;
     }
 
     /* Green accept button */
@@ -38,21 +37,27 @@
       padding: 10px 20px;
       border: none;
       cursor: pointer;
-      border-radius: 5px;
+      border-radius: 10px; /* Add rounded corners */
     }
 
-    /* Soft font */
-    h2 {
-      font-family: Arial, sans-serif;
+    /* Grey disallow button */
+    .disallow-btn {
+      background-color: grey;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+      border-radius: 10px; /* Add rounded corners */
     }
 
-    /* Black background for text */
+    /* Black background and white text */
     .text {
-      background-color: black;
-      color: white;
-      padding: 20px;
+      display: none;
       font-size: 24px;
       text-align: center;
+      color: #fff;
+      background-color: black;
+      padding: 20px;
     }
 
     /* Ensure video covers full screen */
@@ -69,7 +74,7 @@
     <div class="popup-content">
       <h2>Accept or Disallow Cookies</h2>
       <button id="accept-btn" class="accept-btn">Accept</button>
-      <button id="disallow-btn">Disallow</button>
+      <button id="disallow-btn" class="disallow-btn">Disallow</button>
     </div>
   </div>
 
@@ -91,17 +96,17 @@
       var video = document.getElementById('my-video');
 
       // Show the popup initially
-      cookiePopup.style.display = 'flex';
+      cookiePopup.style.display = 'block';
 
       // Handle accept button click
       acceptBtn.addEventListener('click', function() {
-        cookiePopup.style.display = 'none';
+        cookiePopup.style.display = '
+none';
         showTextAndVideo();
       });
 
       // Handle disallow button click
       disallowBtn.addEventListener('click', function() {
-        cookiePopup.style.display =
         cookiePopup.style.display = 'none';
         showTextAndVideo();
       });
@@ -125,3 +130,4 @@
   </script>
 </body>
 </html>
+
