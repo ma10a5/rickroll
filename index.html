@@ -6,12 +6,34 @@
 <meta property="og:title" content="Colonist: Play Settlers of Catan Alternative - Free Online Game">
 <meta property="og:description" content="Free online alternative to the popular board game Settlers of Catan. Play single or multiplayer. No download or sign up required!">
 <meta property="og:image"https://colonist.io/dist/images/square_logo.png?v=157">
-<meta property="og:image" content="https://colonist.io/dist/images/square_logo.png" />   
+<meta property="og:image" content="https://colonist.io/dist/images/square_logo.png" />
+                                                                                   <style>
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+
+      video {
+        width: 100%;
+        height: 100%;
+        object-fit: fill;
+      }
+    </style>
 </head>
 <body>
   <p>Conduct the rickroll</p>
   <video autoplay controls>
       <source src="rickroll.mp4" type="video/mp4">
                                                      </video>
+                                                     <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        var video = document.querySelector('video');
+        video.addEventListener('loadedmetadata', function() {
+          video.requestFullscreen().then(function() {
+            video.play();
+          });
+        });
+      });
+    </script>
 </body>
 </html>
