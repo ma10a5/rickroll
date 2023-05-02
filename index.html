@@ -65,6 +65,7 @@
     }
 
     video {
+      display: none;
       width: 100%;
       height: 100%;
       object-fit: fill;
@@ -91,6 +92,7 @@
   <script>
     const popupContainer = document.querySelector('.popup-container');
     const contentContainer = document.querySelector('.content-container');
+    const textElement = document.querySelector('.text');
     const videoElement = document.getElementById('video');
 
     // Function to show the content after a delay
@@ -99,27 +101,31 @@
       contentContainer.style.display = 'flex';
 
       setTimeout(() => {
-        contentContainer.style.display = 'none';
+        textElement.style.display = 'none';
+        videoElement.style.display = 'block';
         videoElement.play();
-      }, 3000); // 3 seconds delay before hiding the content and autoplaying the video
+      }, 3000); // 3 seconds delay before hiding the text and autoplaying the video
+
+      videoElement.addEventListener('ended', () => {
+        videoElement.style.display = 'none';
+      });
     }
 
-    const acceptButton = document.querySelector('.accept-btn');
+    const acceptButton = document.querySelector('.accept
+-btn');
     const disallowButton = document.querySelector('.disallow-btn');
 
-    // Attach click event listeners to the accept and disallow buttons
-    acceptButton.addEventListener('click', showContent);
-    disallowButton.addEventListener
+    // Attach click event listener to the accept button
+    acceptButton.addEventListener('click', () => {
+      showContent();
+    });
+
     // Attach click event listener to the disallow button
     disallowButton.addEventListener('click', () => {
-      popupContainer.style.display = 'none';
-      contentContainer.style.display = 'flex';
-      
-      setTimeout(() => {
-        contentContainer.style.display = 'none';
-      }, 3000); // 3 seconds delay before hiding the content
+      showContent();
     });
   </script>
 </body>
 </html>
+
 
