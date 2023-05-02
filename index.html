@@ -2,45 +2,57 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="colonists.io/iB437!#">
-  <meta property="og:title" content="Colonist: Play Settlers of Catan Alternative - Free Online Game">
-  <meta property="og:description" content="Free online alternative to the popular board game Settlers of Catan. Play single or multiplayer. No download or sign up required!">
-  <meta property="og:image" content="https://colonist.io/dist/images/square_logo.png?v=157">
   <style>
     html, body {
       margin: 0;
       padding: 0;
       overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: black;
+      height: 100vh;
+    }
+
+    #video-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
     }
 
     video {
-      width: 100vw;
-      height: 100vh;
+      width: 100%;
+      height: 100%;
       object-fit: fill;
+    }
+
+    #text-overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      font-size: 32px;
+      font-weight: bold;
+      text-align: center;
     }
   </style>
 </head>
 <body>
-  <video autoplay>
-    <source src="rickroll.mp4" type="video/mp4">
-  </video>
+  <div id="video-container">
+    <video id="my-video" autoplay>
+      <source src="rickroll.mp4" type="video/mp4">
+    </video>
+    <div id="text-overlay">Conduct the Rickroll</div>
+  </div>
 
   <script>
-    // Fix for Permissions-Policy header error
-    if ('interestCohort' in document) {
-      document.interestCohort().then(function(cohort) {
-        // Access the interest cohort value if needed
-        console.log(cohort);
-      }).catch(function(error) {
-        console.log('Error retrieving interest cohort:', error);
+    document.addEventListener('DOMContentLoaded', function() {
+      var video = document.getElementById('my-video');
+      video.addEventListener('loadedmetadata', function() {
+        video.play();
       });
-    }
-
-    // Fix for DevTools source map error
-    //# sourceMappingURL=browser-polyfill.js.map
+    });
   </script>
 </body>
 </html>
-
