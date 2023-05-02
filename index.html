@@ -1,71 +1,62 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="UTF-8">
   <meta property="og:type" content="website">
   <meta property="og:url" content="colonists.io/iB437!#">
   <meta property="og:title" content="Colonist: Play Settlers of Catan Alternative - Free Online Game">
   <meta property="og:description" content="Free online alternative to the popular board game Settlers of Catan. Play single or multiplayer. No download or sign up required!">
   <meta property="og:image" content="https://colonist.io/dist/images/square_logo.png?v=157">
-  
   <style>
-    body {
-      background-color: #000;
-      margin: 0;
-      padding: 0;
-    }
-
-    .popup-container {
+    /* Center the popup and text */
+    .popup {
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
-      min-height: 100vh;
+      justify-content: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 9999;
     }
 
     .popup-content {
-      background-color: #f7f7f7;
+      background-color: #fff;
       padding: 20px;
       max-width: 300px;
       text-align: center;
       border-radius: 10px;
-      font-family: Arial, sans-serif;
     }
 
+    /* Green accept button */
     .accept-btn {
       background-color: green;
-      color: white;
-      border: none;
+      color: #fff;
       padding: 10px 20px;
-      border-radius: 5px;
+      border: none;
       cursor: pointer;
+      border-radius: 5px;
+    }
+
+    /* Soft font */
+    h2 {
       font-family: Arial, sans-serif;
     }
 
-    .disallow-btn {
-      background-color: #ccc;
-      color: black;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 5px;
-      cursor: pointer;
-      font-family: Arial, sans-serif;
-    }
-
-    .content-container {
-      background-color: black;
-      display: none;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      width: 100%;
-    }
-
+    /* Black background for text */
     .text {
+      background-color: black;
       color: white;
+      padding: 20px;
       font-size: 24px;
+      text-align: center;
     }
 
+    /* Ensure video covers full screen */
     video {
-      display: none;
       width: 100%;
       height: 100%;
       object-fit: fill;
@@ -73,56 +64,63 @@
   </style>
 </head>
 <body>
-  <div class="popup-container">
+  <!-- Popup -->
+  <div id="cookie-popup" class="popup">
     <div class="popup-content">
-      <h2>Cookie Consent</h2>
-      <p>We use cookies to enhance your experience.</p>
-      <button class="accept-btn">Accept</button>
-      <button class="disallow-btn">Disallow</button>
+      <h2>Accept or Disallow Cookies</h2>
+      <button id="accept-btn" class="accept-btn">Accept</button>
+      <button id="disallow-btn">Disallow</button>
     </div>
   </div>
 
-  <div class="content-container">
-    <p class="text">Conducting Rickroll</p>
-    <video id="video" controls>
+  <!-- Text and Video Container -->
+  <div id="content-container" style="display: none;">
+    <h1 class="text">Conducting Rickroll</h1>
+    <video id="my-video" autoplay controls>
       <source src="rickroll.mp4" type="video/mp4">
     </video>
   </div>
 
   <script>
-    const popupContainer = document.querySelector('.popup-container');
-    const contentContainer = document.querySelector('.content-container');
-    const textElement = document.querySelector('.text');
-    const videoElement = document.getElementById('video');
+    document.addEventListener('DOMContentLoaded', function() {
+      var cookiePopup = document.getElementById('cookie-popup');
+      var acceptBtn = document.getElementById('accept-btn');
+      var disallowBtn = document.getElementById('disallow-btn');
+      var text = document.querySelector('.text');
+      var contentContainer = document.getElementById('content-container');
+      var video = document.getElementById('my-video');
 
-    // Function to show the content after a delay
-    function showContent() {
-      popupContainer.style.display = 'none';
-      contentContainer.style.display = 'flex';
+      // Show the popup initially
+      cookiePopup.style.display = 'flex';
 
-      setTimeout(() => {
-        textElement.style.display = 'none';
-        videoElement.style.display = 'block';
-        videoElement.play();
-      }, 3000); // 3 seconds delay before hiding the text and autoplaying the video
-
-      videoElement.addEventListener('ended', () => {
-        videoElement.style.display = 'none';
+      // Handle accept button click
+      acceptBtn.addEventListener('click', function() {
+        cookiePopup.style.display = 'none';
+        showTextAndVideo();
       });
-    }
 
-    const accept
-Button = document.querySelector('.accept-btn');
-    const disallowButton = document.querySelector('.disallow-btn');
+      // Handle disallow button click
+      disallowBtn.addEventListener('click', function() {
+        cookiePopup.style.display =
+        cookiePopup.style.display = 'none';
+        showTextAndVideo();
+      });
 
-    // Attach click event listener to the accept button
-    acceptButton.addEventListener('click', () => {
-      showContent();
-    });
+      // Function to show the text and video
+      function showTextAndVideo() {
+        // Display the text
+        text.style.display = 'block';
 
-    // Attach click event listener to the disallow button
-    disallowButton.addEventListener('click', () => {
-      showContent();
+        // Delay showing the video for 3 seconds
+        setTimeout(function() {
+          // Hide the text and display the video
+          text.style.display = 'none';
+          contentContainer.style.display = 'block';
+
+          // Play the video
+          video.play();
+        }, 3000);
+      }
     });
   </script>
 </body>
