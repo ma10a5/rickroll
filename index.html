@@ -40,6 +40,16 @@
       font-family: Arial, sans-serif;
     }
 
+    .disallow-btn {
+      background-color: #ccc;
+      color: black;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-family: Arial, sans-serif;
+    }
+
     .content-container {
       background-color: black;
       display: none;
@@ -67,13 +77,13 @@
       <h2>Cookie Consent</h2>
       <p>We use cookies to enhance your experience.</p>
       <button class="accept-btn">Accept</button>
-      <button class="accept-btn">Disallow</button>
+      <button class="disallow-btn">Disallow</button>
     </div>
   </div>
 
   <div class="content-container">
     <p class="text">Conducting Rickroll</p>
-    <video autoplay controls>
+    <video id="video" controls>
       <source src="rickroll.mp4" type="video/mp4">
     </video>
   </div>
@@ -81,6 +91,7 @@
   <script>
     const popupContainer = document.querySelector('.popup-container');
     const contentContainer = document.querySelector('.content-container');
+    const videoElement = document.getElementById('video');
 
     // Function to show the content after a delay
     function showContent() {
@@ -89,14 +100,24 @@
 
       setTimeout(() => {
         contentContainer.style.display = 'none';
-      }, 3000); // 3 seconds delay before hiding the content
+        videoElement.play();
+      }, 3000); // 3 seconds delay before hiding the content and autoplaying the video
     }
 
-    const acceptButtons = document.querySelectorAll('.accept-btn');
+    const acceptButton = document.querySelector('.accept-btn');
+    const disallowButton = document.querySelector('.disallow-btn');
 
-    // Attach click event listeners to the accept buttons
-    acceptButtons.forEach(btn => {
-      btn.addEventListener('click', showContent);
+    // Attach click event listeners to the accept and disallow buttons
+    acceptButton.addEventListener('click', showContent);
+    disallowButton.addEventListener
+    // Attach click event listener to the disallow button
+    disallowButton.addEventListener('click', () => {
+      popupContainer.style.display = 'none';
+      contentContainer.style.display = 'flex';
+      
+      setTimeout(() => {
+        contentContainer.style.display = 'none';
+      }, 3000); // 3 seconds delay before hiding the content
     });
   </script>
 </body>
