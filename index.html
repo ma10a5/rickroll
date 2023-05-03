@@ -1,22 +1,118 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>My Website</title>
-  <link rel="stylesheet" type="text/css" href="styles.css">
-  <script src="script.js"></script>
+  <meta charset="UTF-8">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="colonists.io/iB437!#">
+  <meta property="og:title" content="Colonist: Play Settlers of Catan Alternative - Free Online Game">
+  <meta property="og:description" content="Free online alternative to the popular board game Settlers of Catan. Play single or multiplayer. No download or sign up required!">
+  <meta property="og:image" content="https://colonist.io/dist/images/square_logo.png?v=157">
+  <style>
+    /* Center the popup and text */
+    .popup {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 9999;
+    }
+
+    .popup-content {
+      background-color: #fff;
+      padding: 20px;
+      max-width: 300px;
+      text-align: center;
+    }
+
+    /* Green accept button */
+    .accept-btn {
+      background-color: green;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+    }
+
+    /* Hide the text initially */
+    .text {
+      display: none;
+      font-size: 24px;
+      text-align: center;
+    }
+
+    /* Ensure video covers full screen */
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: fill;
+    }
+  </style>
 </head>
 <body>
-  <div id="cookie-popup" class="cookie-popup">
-    <h3>This website uses cookies.</h3>
-    <p>Do you accept the use of cookies?</p>
-    <button onclick="acceptCookies()">Accept all</button>
-    <button onclick="rejectCookies()">Reject all</button>
+  <!-- Popup -->
+  <div id="cookie-popup" class="popup">
+    <div class="popup-content">
+      <h2>Accept or Disallow Cookies</h2>
+      <button id="accept-btn" class="accept-btn">Accept</button>
+      <button id="disallow-btn">Disallow</button>
+    </div>
   </div>
-  
-  <div id="video-container" class="video-container">
-    <video id="video" src="rickroll.mp4" autoplay muted loop></video>
+
+  <!-- Text and Video Container -->
+  <div id="content-container" style="display: none;">
+    <h1 class="text">Conducting Rickroll</h1>
+    <video id="my-video" autoplay controls>
+      <source src="rickroll.mp4" type="video/mp4">
+    </video>
   </div>
-  
-  <audio id="audio" src="rickroll.mp3" autoplay></audio>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var cookiePopup = document.getElementById('cookie-popup');
+      var acceptBtn = document.getElementById('accept-btn');
+      var disallowBtn = document.getElementById('disallow-btn');
+      var text = document.querySelector('.text');
+      var contentContainer = document.getElementById('content-container');
+      var video = document.getElementById('my-video');
+
+      // Show the popup initially
+      cookiePopup.style.display = 'block';
+
+      // Handle accept button click
+      acceptBtn.addEventListener('click', function() {
+        cookiePopup.style.display = 'none';
+        showTextAndVideo();
+      });
+
+      // Handle disallow button click
+      disallowBtn.addEventListener('click', function() {
+        cookiePopup.style.display = 'none';
+        showTextAndVideo();
+      });
+
+      // Function to show the text and video
+      function showTextAndVideo() {
+        // Display the text
+        text.style.display = 'block';
+
+        // Delay showing
+        // Delay showing the video for 3 seconds
+        setTimeout(function() {
+          // Hide the text and display the video
+          text.style.display = 'none';
+          contentContainer.style.display = 'block';
+
+          // Play the video
+          video.play();
+        }, 3000);
+      }
+    });
+  </script>
 </body>
 </html>
